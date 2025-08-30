@@ -279,7 +279,59 @@
             line-height: 1.7;
         }
 
-        /* Platform cards */
+        /* Platform tabs */
+        .platform-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-gray);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* URL preview styling */
+        .platform-url {
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            opacity: 0.8;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            word-break: break-all;
+        }
         .platforms-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -613,7 +665,16 @@
         <section id="platforms" class="section">
             <div class="reveal">
                 <h2>Leading AI Agent Platforms</h2>
-                <div class="platforms-grid">
+                
+                <div class="platform-tabs">
+                    <button class="tab-button active" data-tab="coding">Coding Agents</button>
+                    <button class="tab-button" data-tab="general">General Purpose</button>
+                    <button class="tab-button" data-tab="enterprise">Enterprise</button>
+                    <button class="tab-button" data-tab="frameworks">Frameworks</button>
+                </div>
+
+                <!-- Coding Agents Tab -->
+                <div class="tab-content active" id="coding">
                     <div class="platform-card">
                         <div class="platform-logo e2b-logo">E2B</div>
                         <h3>E2B</h3>
@@ -624,7 +685,571 @@
                             <li>Built-in code execution</li>
                             <li>Enterprise-grade security</li>
                         </ul>
-                        <a href="#" class="platform-link">Explore E2B →</a>
+                        <div class="platform-url">e2b.dev</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #4285f4, #9c27b0);">🔥</div>
+                        <h3>Google Jules</h3>
+                        <p>Asynchronous coding agent that clones your repo to a secure VM and ships PRs using Gemini 2.5. Revolutionary autonomous development workflow.</p>
+                        <ul class="platform-features">
+                            <li>Repository cloning to secure VM</li>
+                            <li>Automated PR creation</li>
+                            <li>Gemini 2.5 powered</li>
+                            <li>Asynchronous development</li>
+                        </ul>
+                        <div class="platform-url">blog.google/technology/google-labs/jules-now-available/</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #000, #333);">⚡</div>
+                        <h3>xAI Grok Code Fast 1</h3>
+                        <p>Speed-first agentic coding model rolling out via partners like GitHub Copilot and Windsurf. Optimized for lightning-fast code generation.</p>
+                        <ul class="platform-features">
+                            <li>Speed-optimized coding</li>
+                            <li>GitHub Copilot integration</li>
+                            <li>Windsurf editor support</li>
+                            <li>Partner ecosystem rollout</li>
+                        </ul>
+                        <div class="platform-url">x.ai/news/grok-code-fast-1</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #4285f4, #34a853);">⌨️</div>
+                        <h3>Gemini CLI (Zed ACP)</h3>
+                        <p>Gemini CLI now runs as a visual coding agent inside the Zed editor via Agent Client Protocol. Terminal meets visual coding.</p>
+                        <ul class="platform-features">
+                            <li>Zed editor integration</li>
+                            <li>Agent Client Protocol</li>
+                            <li>Visual coding interface</li>
+                            <li>Command-line power</li>
+                        </ul>
+                        <div class="platform-url">developers.googleblog.com/en/gemini-cli-is-now-integrated-into-zed/</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #f39800, #ff6b35);">🔧</div>
+                        <h3>Replit Agent</h3>
+                        <p>Hosted coding agent that fixes bugs, builds features, and opens PRs from natural-language tasks. No setup required.</p>
+                        <ul class="platform-features">
+                            <li>Natural language tasks</li>
+                            <li>Bug fixing automation</li>
+                            <li>Feature development</li>
+                            <li>Hosted environment</li>
+                        </ul>
+                        <div class="platform-url">replit.com/agent</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">🤖</div>
+                        <h3>Devin (Cognition)</h3>
+                        <p>Autonomous "software engineer" agent for end-to-end dev tasks with repo and environment access. The future of AI development.</p>
+                        <ul class="platform-features">
+                            <li>End-to-end development</li>
+                            <li>Repository access</li>
+                            <li>Environment management</li>
+                            <li>Autonomous engineering</li>
+                        </ul>
+                        <div class="platform-url">cognition.ai/devin</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #333, #666);">💻</div>
+                        <h3>Cursor Agents</h3>
+                        <p>IDE with agent/background modes that edit & run code, manage tasks, and work across your entire codebase seamlessly.</p>
+                        <ul class="platform-features">
+                            <li>Background agent modes</li>
+                            <li>Codebase-wide operations</li>
+                            <li>Task management</li>
+                            <li>Integrated development</li>
+                        </ul>
+                        <div class="platform-url">cursor.com/agents</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #0ea5e9, #3b82f6);">🌊</div>
+                        <h3>Windsurf Editor</h3>
+                        <p>AI-native IDE with agentic workflows (e.g., Cascade) that can build apps end-to-end with intelligent automation.</p>
+                        <ul class="platform-features">
+                            <li>AI-native development</li>
+                            <li>Cascade workflows</li>
+                            <li>End-to-end app building</li>
+                            <li>Intelligent automation</li>
+                        </ul>
+                        <div class="platform-url">windsurf.com/editor</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #10b981, #059669);">🔄</div>
+                        <h3>Continue</h3>
+                        <p>Open-source platform to build/run custom coding agents in VS Code, JetBrains, CLI, and CI environments.</p>
+                        <ul class="platform-features">
+                            <li>VS Code & JetBrains support</li>
+                            <li>CLI integration</li>
+                            <li>CI/CD workflows</li>
+                            <li>Custom agent building</li>
+                        </ul>
+                        <div class="platform-url">continue.dev</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">⚡</div>
+                        <h3>Aider</h3>
+                        <p>Terminal-based coding agent that edits multiple files and auto-commits sensible git diffs. Perfect for command-line workflows.</p>
+                        <ul class="platform-features">
+                            <li>Multi-file editing</li>
+                            <li>Auto-commit git diffs</li>
+                            <li>Terminal-based workflow</li>
+                            <li>Smart version control</li>
+                        </ul>
+                        <div class="platform-url">aider.chat</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #f59e0b, #d97706);">🛠️</div>
+                        <h3>OpenHands</h3>
+                        <p>Open-source developer agent that can browse, edit, and run code locally or in sandboxed environments. Community-driven development.</p>
+                        <ul class="platform-features">
+                            <li>Local & sandboxed execution</li>
+                            <li>Code browsing & editing</li>
+                            <li>Open-source community</li>
+                            <li>Flexible deployment</li>
+                        </ul>
+                        <div class="platform-url">github.com/All-Hands-AI/openhands</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #334155, #64748b);">⚙️</div>
+                        <h3>GPT Engineer</h3>
+                        <p>Generate/iterate full codebases from prompts with planning and refactoring loops. End-to-end project creation.</p>
+                        <ul class="platform-features">
+                            <li>Full codebase generation</li>
+                            <li>Planning & refactoring</li>
+                            <li>Iterative development</li>
+                            <li>Project-level automation</li>
+                        </ul>
+                        <div class="platform-url">github.com/gpt-engineer-org/gpt-engineer</div>
+                    </div>
+                </div>
+
+                <!-- General Purpose Tab -->
+                <div class="tab-content" id="general">
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #10a37f, #1a73e8);">🤖</div>
+                        <h3>OpenAI ChatGPT Agent</h3>
+                        <p>General-purpose agent inside ChatGPT that autonomously researches and takes actions across the web, files, and apps.</p>
+                        <ul class="platform-features">
+                            <li>Web research automation</li>
+                            <li>File & app integration</li>
+                            <li>Autonomous task execution</li>
+                            <li>Cross-platform actions</li>
+                        </ul>
+                        <div class="platform-url">openai.com/index/introducing-chatgpt-agent/</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #64748b, #1e293b);">💻</div>
+                        <h3>Open Interpreter</h3>
+                        <p>Local "computer-use" agent that runs shell/Python and can control apps and files. Your personal computer assistant.</p>
+                        <ul class="platform-features">
+                            <li>Local computer control</li>
+                            <li>Shell & Python execution</li>
+                            <li>App automation</li>
+                            <li>File system access</li>
+                        </ul>
+                        <div class="platform-url">github.com/OpenInterpreter/open-interpreter</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #f59e0b, #ea580c);">🔗</div>
+                        <h3>Zapier Central</h3>
+                        <p>No-code platform to deploy task-running agents across 7,000+ app actions and workflows. Connect everything seamlessly.</p>
+                        <ul class="platform-features">
+                            <li>7,000+ app integrations</li>
+                            <li>No-code deployment</li>
+                            <li>Workflow automation</li>
+                            <li>Task-running agents</li>
+                        </ul>
+                        <div class="platform-url">zapier.com/central</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">🎯</div>
+                        <h3>Dify</h3>
+                        <p>No/low-code agentic platform to develop, deploy, and manage autonomous agents. Perfect for non-technical users.</p>
+                        <ul class="platform-features">
+                            <li>No/low-code development</li>
+                            <li>Agent deployment</li>
+                            <li>Management dashboard</li>
+                            <li>User-friendly interface</li>
+                        </ul>
+                        <div class="platform-url">dify.ai</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">🌊</div>
+                        <h3>Flowise</h3>
+                        <p>Visual builder for LLM apps that includes agent nodes and tool integrations. Drag-and-drop agent creation.</p>
+                        <ul class="platform-features">
+                            <li>Visual drag-and-drop builder</li>
+                            <li>Agent nodes & tools</li>
+                            <li>LLM app creation</li>
+                            <li>Integration ecosystem</li>
+                        </ul>
+                        <div class="platform-url">flowiseai.com</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #dc2626, #991b1b);">🚀</div>
+                        <h3>SuperAGI</h3>
+                        <p>Open-source framework to build and manage autonomous agents with rich toolkits. Pioneer in agent development.</p>
+                        <ul class="platform-features">
+                            <li>Rich toolkit ecosystem</li>
+                            <li>Autonomous agent management</li>
+                            <li>Open-source community</li>
+                            <li>Extensible framework</li>
+                        </ul>
+                        <div class="platform-url">github.com/TransformerOptimus/SuperAGI</div>
+                    </div>
+                </div>
+
+                <!-- Enterprise Tab -->
+                <div class="tab-content" id="enterprise">
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #ff6b00, #ff8500);">☁️</div>
+                        <h3>Agents for Amazon Bedrock</h3>
+                        <p>Managed agent service and AgentCore SDK to build enterprise agents with tool/action flows on AWS infrastructure.</p>
+                        <ul class="platform-features">
+                            <li>Managed AWS service</li>
+                            <li>AgentCore SDK</li>
+                            <li>Enterprise tool flows</li>
+                            <li>Scalable infrastructure</li>
+                        </ul>
+                        <div class="platform-url">aws.amazon.com/bedrock/agents/</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #0176d3, #1589ee);">💼</div>
+                        <h3>Salesforce Agentforce</h3>
+                        <p>Agentic AI for CRM workflows built on Einstein 1 with declarative builder and comprehensive tool access.</p>
+                        <ul class="platform-features">
+                            <li>CRM workflow automation</li>
+                            <li>Einstein 1 platform</li>
+                            <li>Declarative builder</li>
+                            <li>Enterprise CRM focus</li>
+                        </ul>
+                        <div class="platform-url">salesforce.com/products/agentforce/</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #4285f4, #34a853);">🔬</div>
+                        <h3>Google Cloud AI Agents</h3>
+                        <p>6 specialized agents for data tasks built on Gemini models. Enterprise-scale data handling and automation.</p>
+                        <ul class="platform-features">
+                            <li>Automated data pipelines</li>
+                            <li>Query optimization</li>
+                            <li>Gemini Data Agents APIs</li>
+                            <li>Enterprise cloud integration</li>
+                        </ul>
+                        <div class="platform-url">cloud.google.com/ai-agents</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #29b5e8, #1e88e5);">❄️</div>
+                        <h3>Snowflake Data Science Agent</h3>
+                        <p>Automated data science processes for enterprise analytics with SQL and Python integration in cloud data platform.</p>
+                        <ul class="platform-features">
+                            <li>Feature engineering automation</li>
+                            <li>Model training & deployment</li>
+                            <li>SQL & Python integration</li>
+                            <li>Enterprise analytics focus</li>
+                        </ul>
+                        <div class="platform-url">snowflake.com/data-science-agent</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #ff3621, #ff8a00);">🧱</div>
+                        <h3>Databricks Agent Bricks</h3>
+                        <p>Modular agent framework for data and AI workflows in lakehouse environments with multi-agent orchestration.</p>
+                        <ul class="platform-features">
+                            <li>Multi-agent orchestration</li>
+                            <li>ML model deployment</li>
+                            <li>Data governance automation</li>
+                            <li>Big data scalability</li>
+                        </ul>
+                        <div class="platform-url">databricks.com/agent-bricks</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #00d4aa, #0066cc);">📊</div>
+                        <h3>Confluent Streaming Agents</h3>
+                        <p>Real-time data streaming agents integrated with Kafka for event-driven workflows and low-latency automation.</p>
+                        <ul class="platform-features">
+                            <li>Event-driven automation</li>
+                            <li>Low-latency processing</li>
+                            <li>IoT & finance optimization</li>
+                            <li>Kafka ecosystem integration</li>
+                        </ul>
+                        <div class="platform-url">confluent.io/streaming-agents</div>
+                    </div>
+                </div>
+
+                <!-- Frameworks Tab -->
+                <div class="tab-content" id="frameworks">
+                    <div class="platform-card">
+                        <div class="platform-logo langchain-logo">🦜</div>
+                        <h3>LangGraph (LangChain)</h3>
+                        <p>Stateful agent framework for building, debugging, and deploying reliable production agents with advanced workflow management.</p>
+                        <ul class="platform-features">
+                            <li>Stateful agent management</li>
+                            <li>Production debugging</li>
+                            <li>Reliable deployment</li>
+                            <li>Workflow orchestration</li>
+                        </ul>
+                        <div class="platform-url">langchain.com/langgraph</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo autogen-logo">⚡</div>
+                        <h3>Microsoft AutoGen</h3>
+                        <p>Multi-agent framework to build conversational agents and coordinated LLM workflows with Microsoft backing.</p>
+                        <ul class="platform-features">
+                            <li>Multi-agent conversations</li>
+                            <li>Coordinated LLM workflows</li>
+                            <li>Microsoft ecosystem</li>
+                            <li>Enterprise support</li>
+                        </ul>
+                        <div class="platform-url">microsoft.github.io/autogen/stable/</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">🔄</div>
+                        <h3>AG2 (formerly AutoGen)</h3>
+                        <p>Community-driven "agent OS" fork with built-in conversation patterns and human-in-the-loop workflows.</p>
+                        <ul class="platform-features">
+                            <li>Agent operating system</li>
+                            <li>Conversation patterns</li>
+                            <li>Human-in-the-loop</li>
+                            <li>Community-driven development</li>
+                        </ul>
+                        <div class="platform-url">docs.ag2.ai</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">🚢</div>
+                        <h3>CrewAI</h3>
+                        <p>Python framework for multi-agent collaboration with YAML or code configuration. Build agent teams easily.</p>
+                        <ul class="platform-features">
+                            <li>Multi-agent collaboration</li>
+                            <li>YAML configuration</li>
+                            <li>Python framework</li>
+                            <li>Team coordination</li>
+                        </ul>
+                        <div class="platform-url">docs.crewai.com</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #7c2d12, #ea580c);">🦙</div>
+                        <h3>LlamaIndex Agents</h3>
+                        <p>Agent framework over your data with tools, memory, and workflow primitives. Data-centric agent development.</p>
+                        <ul class="platform-features">
+                            <li>Data-centric agents</li>
+                            <li>Memory management</li>
+                            <li>Workflow primitives</li>
+                            <li>Tool integration</li>
+                        </ul>
+                        <div class="platform-url">docs.llamaindex.ai/en/stable/use_cases/agents/</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #0f766e, #0d9488);">🔧</div>
+                        <h3>Phidata (Agno)</h3>
+                        <p>Framework to build multimodal agents/teams with tools, memory, and an optional Agent UI for comprehensive development.</p>
+                        <ul class="platform-features">
+                            <li>Multimodal agent teams</li>
+                            <li>Tool & memory systems</li>
+                            <li>Optional Agent UI</li>
+                            <li>Comprehensive framework</li>
+                        </ul>
+                        <div class="platform-url">docs.phidata.com/agents/introduction</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">🤗</div>
+                        <h3>Hugging Face smolagents</h3>
+                        <p>Lightweight Python library for building tool-using agents and evaluators. Simple yet powerful agent development.</p>
+                        <ul class="platform-features">
+                            <li>Lightweight Python library</li>
+                            <li>Tool-using agents</li>
+                            <li>Agent evaluators</li>
+                            <li>Hugging Face ecosystem</li>
+                        </ul>
+                        <div class="platform-url">huggingface.co/docs/smolagents/index</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">🎯</div>
+                        <h3>Griptape</h3>
+                        <p>Production framework for agentic workflows with memory, tools, policies, and tracing for enterprise deployments.</p>
+                        <ul class="platform-features">
+                            <li>Production-ready framework</li>
+                            <li>Memory & policy management</li>
+                            <li>Workflow tracing</li>
+                            <li>Enterprise deployment</li>
+                        </ul>
+                        <div class="platform-url">griptape.ai</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #0891b2, #0e7490);">🔍</div>
+                        <h3>Haystack Agents</h3>
+                        <p>Agent capabilities inside the Haystack retrieval framework for tool-using LLM apps with advanced search integration.</p>
+                        <ul class="platform-features">
+                            <li>Retrieval framework integration</li>
+                            <li>Tool-using LLM apps</li>
+                            <li>Advanced search capabilities</li>
+                            <li>Information retrieval focus</li>
+                        </ul>
+                        <div class="platform-url">haystack.deepset.ai/agents</div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #059669, #047857);">🤖</div>
+                        <h3>AutoGPT</h3>
+                        <p>Pioneer autonomous-agent experiment with tools/plugins and task planning. One of the original autonomous agent projects.</p>
+                        <ul class="platform-features">
+                            <li>Autonomous task planning</li>
+                            <li>Plugin ecosystem</li>
+                            <li>Tool integration</li>
+                            <li>Pioneer in agent development</li>
+                        </ul>
+                        <div class="platform-url">github.com/Significant-Gravitas/AutoGPT</div>
+                    </div>
+                </div>
+
+                <!-- Monitoring Tab -->
+                <div class="tab-content" id="monitoring">
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">📊</div>
+                        <h3>AgentOps</h3>
+                        <p>Monitoring, evaluation, tracing, and cost tracking for AI agents with comprehensive SDK and dashboard.</p>
+                        <ul class="platform-features">
+                            <li>Agent monitoring & tracing</li>
+                            <li>Cost tracking</li>
+                            <li>Performance evaluation</li>
+                            <li>Dashboard & SDK</li>
+                        </ul>
+                        <div class="platform-url">agentops.ai</div>
+                    </div>
+                </div>
+            </div>
+        </section></li>
+                        </ul>
+                        <a href="#" class="platform-link">Learn More →</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #333, #000);">⚡</div>
+                        <h3>GitHub Agents Panel</h3>
+                        <p>New Copilot ecosystem update launched August 2025. Seamless agent activation for coding tasks directly from GitHub's interface.</p>
+                        <ul class="platform-features">
+                            <li>Code generation & debugging</li>
+                            <li>VS Code integration</li>
+                            <li>Accessible agentic workflows</li>
+                            <li>Developer collaboration tools</li>
+                        </ul>
+                        <a href="#" class="platform-link">Get Started →</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #4285f4, #34a853);">🔬</div>
+                        <h3>Google Cloud AI Agents</h3>
+                        <p>6 specialized agents for data tasks launched August 8, 2025. Built on Gemini models for enterprise-scale data handling.</p>
+                        <ul class="platform-features">
+                            <li>Automated data pipelines</li>
+                            <li>Query optimization</li>
+                            <li>Gemini Data Agents APIs</li>
+                            <li>Enterprise cloud integration</li>
+                        </ul>
+                        <a href="#" class="platform-link">Explore →</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #00d4aa, #0066cc);">📊</div>
+                        <h3>Confluent Streaming Agents</h3>
+                        <p>Real-time data streaming agents announced August 2025. Integrated with Kafka for event-driven workflows and anomaly detection.</p>
+                        <ul class="platform-features">
+                            <li>Event-driven automation</li>
+                            <li>Low-latency processing</li>
+                            <li>IoT & finance optimization</li>
+                            <li>Kafka ecosystem integration</li>
+                        </ul>
+                        <a href="#" class="platform-link">Discover →</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #10a37f, #1a73e8);">🤖</div>
+                        <h3>OpenAI ChatGPT Agent</h3>
+                        <p>Advanced agent mode launched July 17, 2025. Uses virtual computer for complex tasks like web navigation and code execution.</p>
+                        <ul class="platform-features">
+                            <li>Virtual computer environment</li>
+                            <li>Web navigation & automation</li>
+                            <li>Research-to-action workflows</li>
+                            <li>Tool integrations (browser, terminal)</li>
+                        </ul>
+                        <a href="#" class="platform-link">Try Now →</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #ff6b9d, #c44569);">💝</div>
+                        <h3>Lovable Agent Mode</h3>
+                        <p>Autonomous AI app-building launched July 24, 2025. Reduces errors by 91% with natural language app creation.</p>
+                        <ul class="platform-features">
+                            <li>Natural language instructions</li>
+                            <li>91% error reduction</li>
+                            <li>Vibe-based coding</li>
+                            <li>$100M ARR platform</li>
+                        </ul>
+                        <a href="#" class="platform-link">Build Apps →</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #ff3621, #ff8a00);">🧱</div>
+                        <h3>Databricks Agent Bricks</h3>
+                        <p>Modular agent framework launched June 2025. Multi-agent orchestration for data and AI workflows in lakehouse environments.</p>
+                        <ul class="platform-features">
+                            <li>Multi-agent orchestration</li>
+                            <li>ML model deployment</li>
+                            <li>Data governance automation</li>
+                            <li>Big data scalability</li>
+                        </ul>
+                        <a href="#" class="platform-link">Explore →</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #29b5e8, #1e88e5);">❄️</div>
+                        <h3>Snowflake Data Science Agent</h3>
+                        <p>Automated data science processes launched June 2025. Enterprise analytics with SQL and Python integration.</p>
+                        <ul class="platform-features">
+                            <li>Feature engineering automation</li>
+                            <li>Model training & deployment</li>
+                            <li>SQL & Python integration</li>
+                            <li>Enterprise analytics focus</li>
+                        </ul>
+                        <a href="#" class="platform-link">Get Started →</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-logo" style="background: linear-gradient(135deg, #4285f4, #9c27b0);">⌨️</div>
+                        <h3>Google Gemini CLI</h3>
+                        <p>Open-source AI agent for developers launched June 2025. Brings Gemini models directly into your terminal for coding automation.</p>
+                        <ul class="platform-features">
+                            <li>Command-line interactions</li>
+                            <li>GitHub Actions integration</li>
+                            <li>DevOps automation</li>
+                            <li>Quick prototyping tools</li>
+                        </ul>
+                        <a href="#" class="platform-link">Download →</a>
                     </div>
                     
                     <div class="platform-card">
@@ -823,7 +1448,21 @@
         // Generate particles periodically
         setInterval(createParticle, 3000);
 
-        // Platform card hover effects
+        // Tab functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
         document.querySelectorAll('.platform-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
                 card.style.boxShadow = '0 25px 50px rgba(0, 212, 255, 0.2)';
